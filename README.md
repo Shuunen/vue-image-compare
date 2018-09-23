@@ -28,12 +28,15 @@ npm i vue-image-compare --save
 
 ## Usage
 
+At Vue bootstrap :
+
 ```javascript
-import Vue from 'vue';
+import Vue from 'vue'
+import imageCompare from 'vue-image-compare'
 
 new Vue({
     components: {
-        imageCompare: require('vue-image-compare')
+        imageCompare
     },
     data() {
         return {
@@ -41,8 +44,28 @@ new Vue({
             after: '/img/after.jpg'
         }
     }
-}).$mount('#app');
+}).$mount('#app')
 ```
+
+or inside another component :
+
+```javascript
+import imageCompare from 'vue-image-compare'
+
+export default {
+   data() {
+    return {
+      before: '/img/before.jpg',
+      after: '/img/after.jpg'
+    }
+  },
+  components: {
+    imageCompare
+  }
+}
+```
+
+Then you can use `image-compare` with a minimal init :
 
 ```html
 <div id="app">
@@ -50,21 +73,32 @@ new Vue({
 </div>
 ```
 
+or with some optionals params, like in [demo](https://github.com/Shuunen/vue-image-compare/tree/demo) :
+
+```html
+<div id="app">
+    <image-compare :before="before" :after="after" full isZoomable isSwitchable isDraggable>
+      <i class="fa fa-angle-left" aria-hidden="true" slot="icon-left"></i>
+      <i class="fa fa-angle-right" aria-hidden="true" slot="icon-right"></i>
+    </image-compare>
+</div>
+```
+
 ### Props
 
-| Name           | Type      | Default                   | Description                 |
-| -------------- | --------- | ------------------------- | --------------------------- |
-| `before`       | `String`  | `undefined`               | path to the image *before*  |
-| `after`        | `String`  | `undefined`               | path to the image *after*   |
-| `full`         | `Boolean` | `false`                   | stretch images (1)          |
-| `padding`      | `Object`  | `{left: 0, right: 0}`     | left and right padding (2)  |
-| `hideAfter`    | `Boolean` | `false`                   | hide the after image        |
-| `zoom`         | `Object`  | `{min: 0.5, max: 2}`      | scale image by              |
-| `reset`        | `Boolean` | `false`                   | reset all to original       |
-| `isZoomable`   | `Boolean` | `false`                   | mouse wheel to zoom in/out  |
-| `isDraggable`  | `Boolean` | `false`                   | allow moving the comparison |
-| `isSwitchable` | `Boolean` | `false`                   | allow drag & drop           |
-| `labels`       | `Object`  | `{after: '', before: ''}` | comparison labels           |
+| Name           | Type      | Default                    | Description                 |
+| -------------- | --------- | -------------------------- | --------------------------- |
+| `before`       | `String`  | `undefined` (**required**) | path to the image *before*  |
+| `after`        | `String`  | `undefined` (**required**) | path to the image *after*   |
+| `full`         | `Boolean` | `false`                    | stretch images (1)          |
+| `padding`      | `Object`  | `{left: 0, right: 0}`      | left and right padding (2)  |
+| `hideAfter`    | `Boolean` | `false`                    | hide the after image        |
+| `zoom`         | `Object`  | `{min: 0.5, max: 2}`       | scale image by              |
+| `reset`        | `Boolean` | `false`                    | reset all to original       |
+| `isZoomable`   | `Boolean` | `false`                    | mouse wheel to zoom in/out  |
+| `isDraggable`  | `Boolean` | `false`                    | allow moving the comparison |
+| `isSwitchable` | `Boolean` | `false`                    | allow drag & drop           |
+| `labels`       | `Object`  | `{after: '', before: ''}`  | comparison labels           |
 
 (1) : Determines if images are stretched to fill parent element. Can be used with help of CSS object-fit: cover to create full page image comparison
 
