@@ -68,7 +68,7 @@ export default {
 }
 ```
 
-Then you can use `image-compare` with a minimal init :
+- Then you can use `image-compare` with a minimal init :
 
 ```html
 <div id="app">
