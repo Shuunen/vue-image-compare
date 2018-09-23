@@ -1,22 +1,33 @@
 <template>
     <div id="app">
-        <ImageCompare :before="before" :after="after">
+        <image-compare :before="before" :after="after"
+                       :full="full"
+                       :hide-after="hideAfter"
+                       :is-zoomable="isZoomable"
+                       :is-switchable="isSwitchable"
+                       :is-draggable="isDraggable"
+                       :hide-handle="hideHandle"
+                       :zoom="{min: zoom.min, max: zoom.max}"
+                       :labels="{before: labels.before, after: labels.after}">
+
             <i slot="icon-left" class="fa fa-angle-left" aria-hidden="true"/>
             <i slot="icon-right" class="fa fa-angle-right" aria-hidden="true"/>
-        </ImageCompare>
+        </image-compare>
 
         <hr>
         <label>Before :</label>
         <input v-model="before">
         <label>After :</label>
         <input v-model="after">
+
         <br>
-        <input v-model="full" type="checkbox">
-        <input v-model="hideAfter" type="checkbox">
-        <input v-model="isZoomable" type="checkbox">
-        <input v-model="isSwitchable" type="checkbox">
-        <input v-model="isDraggable" type="checkbox">
-        <input v-model="hideHandle" type="checkbox">
+        <label>full : <input v-model="full" type="checkbox"></label>
+        <label>hideAfter : <input v-model="hideAfter" type="checkbox"></label>
+        <label>isZoomable : <input v-model="isZoomable" type="checkbox"></label>
+        <label>isSwitchable : <input v-model="isSwitchable" type="checkbox"></label>
+        <label>isDraggable : <input v-model="isDraggable" type="checkbox"></label>
+        <label>hideHandle : <input v-model="hideHandle" type="checkbox"></label>
+
         <br>
         <label>Labels :</label>
         <input v-model="labels.after">
@@ -24,8 +35,8 @@
 
         <br>
         <label>Zoom :</label>
-        <input v-model.number="zoom.min">
-        <input v-model.number="zoom.max">
+        <input v-model.number="zoom.min" type="number">
+        <input v-model.number="zoom.max" type="number">
     </div>
 </template>
 
@@ -33,40 +44,41 @@
 import ImageCompare from 'vue-image-compare2'
 
 export default {
-  components: {
-      ImageCompare
-  },
-  name: 'app',
-  data() {
-    return {
-      before: 'assets/before.jpg',
-      after: 'assets/after.jpg',
-      full: true,
-      hideAfter: false,
-      isZoomable: true,
-      isSwitchable: true,
-      isDraggable: true,
-      hideHandle: false,
-      labels: {
-        before: '',
-        after: ''
-      },
-      zoom: {
-        min: '',
-        max: ''
-      }
+    components: {
+        ImageCompare
+    },
+    name: 'app',
+    data() {
+        return {
+            before: 'assets/before.jpg',
+            after: 'assets/after.jpg',
+            full: true,
+            hideAfter: false,
+            isZoomable: true,
+            isSwitchable: true,
+            isDraggable: true,
+            hideHandle: false,
+            labels: {
+                before: 'BEFORE',
+                after: 'AFTER'
+            },
+            zoom: {
+                min: 0.5,
+                max: 2
+            }
+        }
     }
-  }
 }
 </script>
 
-<style lang="scss">
-html,
-body,
-#app {
-  height: 100%;
-}
-body {
-  margin: 0;
-}
+<style>
+    html,
+    body,
+    #app {
+        height: 100%;
+    }
+
+    body {
+        margin: 0;
+    }
 </style>
