@@ -14,29 +14,34 @@
             <i slot="icon-right" class="fa fa-angle-right" aria-hidden="true"/>
         </image-compare>
 
-        <hr>
-        <label>Before :</label>
-        <input v-model="before">
-        <label>After :</label>
-        <input v-model="after">
-
-        <br>
-        <label>full : <input v-model="full" type="checkbox"></label>
-        <label>hideAfter : <input v-model="hideAfter" type="checkbox"></label>
-        <label>isZoomable : <input v-model="isZoomable" type="checkbox"></label>
-        <label>isSwitchable : <input v-model="isSwitchable" type="checkbox"></label>
-        <label>isDraggable : <input v-model="isDraggable" type="checkbox"></label>
-        <label>hideHandle : <input v-model="hideHandle" type="checkbox"></label>
-
-        <br>
-        <label>Labels :</label>
-        <input v-model="labels.after">
-        <input v-model="labels.before">
-
-        <br>
-        <label>Zoom :</label>
-        <input v-model.number="zoom.min" type="number">
-        <input v-model.number="zoom.max" type="number">
+        <div class="options">
+            <div class="wrapper">
+                <label>Before :</label>
+                <input v-model="before">
+                <label>After :</label>
+                <input v-model="after">
+            </div>
+            
+            <div class="wrapper">
+                <label>full : <input v-model="full" type="checkbox"></label>
+                <label>hideAfter : <input v-model="hideAfter" type="checkbox"></label>
+                <label>isZoomable : <input v-model="isZoomable" type="checkbox"></label>
+                <label>isSwitchable : <input v-model="isSwitchable" type="checkbox"></label>
+                <label>isDraggable : <input v-model="isDraggable" type="checkbox"></label>
+                <label>hideHandle : <input v-model="hideHandle" type="checkbox"></label>
+            </div>
+            
+            <div class="wrapper">
+                <label>Labels :</label>
+                <input v-model="labels.after">
+                <input v-model="labels.before">
+            </div>
+            
+            <div class="wrapper">
+                <label>Zoom :</label>
+                <input v-model.number="zoom.min" type="number">
+                <input v-model.number="zoom.max" type="number"></div>
+            </div>
     </div>
 </template>
 
@@ -76,6 +81,15 @@ export default {
     body,
     #app {
         height: 100%;
+    }
+
+    .options {
+        border-top: 1px solid black;
+        padding: 1rem;
+    }
+
+    .wrapper {
+        margin-bottom: 1rem;
     }
 
     body {
