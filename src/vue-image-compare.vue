@@ -29,7 +29,8 @@
              @mousedown.prevent="onMouseDownImage">
 
         <!-- handle -->
-        <div v-if="!isDraggable" v-show="!hideAfter"
+        <div v-if="hideHandleOnDrag" 
+             v-show="!hideAfter"
              :style="{ left: posX + 'px' }"
              class="image-compare-handle"
              @mousedown.prevent="onMouseDownHandle">
@@ -103,6 +104,11 @@ export default {
             required: false
         },
         isSwitchable: {
+            type: Boolean,
+            default: false,
+            required: false
+        },
+        hideHandleOnDrag: {
             type: Boolean,
             default: false,
             required: false
