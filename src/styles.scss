@@ -1,5 +1,3 @@
-$anim-ease: cubic-bezier(0.18, 0.89, 0.32, 1.28);
-
 .image-compare {
     position: relative;
     overflow: hidden;
@@ -24,7 +22,6 @@ $anim-ease: cubic-bezier(0.18, 0.89, 0.32, 1.28);
     img {
         display: block;
         max-width: none;
-        transition: all 0.25s $anim-ease;
     }
 
     .after-name,
@@ -90,7 +87,6 @@ $anim-ease: cubic-bezier(0.18, 0.89, 0.32, 1.28);
     position: absolute;
     top: 0;
     bottom: 0;
-    transition: all 0.25s $anim-ease;
 }
 
 .image-compare-wrapper {
