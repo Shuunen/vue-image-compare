@@ -86,20 +86,20 @@ or with some optionals params, like in [demo](https://github.com/Shuunen/vue-ima
 
 ### Props
 
-| Name               | Type      | Default                    | Description                 |
-| ------------------ | --------- | -------------------------- | --------------------------- |
-| `before`           | `String`  | `undefined` (**required**) | path to the image *before*  |
-| `after`            | `String`  | `undefined` (**required**) | path to the image *after*   |
-| `full`             | `Boolean` | `false`                    | stretch images (1)          |
-| `padding`          | `Object`  | `{left: 0, right: 0}`      | left and right padding (2)  |
-| `hideAfter`        | `Boolean` | `false`                    | hide the after image        |
-| `zoom`             | `Object`  | `{min: 0.5, max: 2}`       | scale image by              |
-| `reset`            | `Boolean` | `false`                    | reset all to original       |
-| `isZoomable`       | `Boolean` | `false`                    | mouse wheel to zoom in/out  |
-| `isDraggable`      | `Boolean` | `false`                    | allow moving the comparison |
-| `isSwitchable`     | `Boolean` | `false`                    | allow drag & drop           |
-| `showHandleOnDrag` | `Boolean` | `false`                    | show handle when draggable  |
-| `labels`           | `Object`  | `{after: '', before: ''}`  | comparison labels           |
+| Name           | Type      | Default                    | Description                 |
+| -------------- | --------- | -------------------------- | --------------------------- |
+| `before`       | `String`  | `undefined` (**required**) | path to the image *before*  |
+| `after`        | `String`  | `undefined` (**required**) | path to the image *after*   |
+| `full`         | `Boolean` | `false`                    | stretch images (1)          |
+| `padding`      | `Object`  | `{left: 0, right: 0}`      | left and right padding (2)  |
+| `hideAfter`    | `Boolean` | `false`                    | hide the after image        |
+| `zoom`         | `Object`  | `{min: 0.5, max: 2}`       | scale image by              |
+| `reset`        | `Boolean` | `false`                    | reset all to original       |
+| `isZoomable`   | `Boolean` | `false`                    | mouse wheel to zoom in/out  |
+| `isDraggable`  | `Boolean` | `false`                    | allow moving the comparison |
+| `isSwitchable` | `Boolean` | `false`                    | allow drag & drop           |
+| `hideHandle`   | `Boolean` | `false`                    | hide vertical handle bar    |
+| `labels`       | `Object`  | `{after: '', before: ''}`  | comparison labels           |
 
 (1) : Determines if images are stretched to fill parent element. Can be used with help of CSS object-fit: cover to create full page image comparison
 

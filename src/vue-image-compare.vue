@@ -29,7 +29,7 @@
              @mousedown.prevent="onMouseDownImage">
 
         <!-- handle -->
-        <div v-if="showHandleOnDrag"
+        <div v-if="!hideHandle"
              v-show="!hideAfter"
              :style="{ left: posX + 'px' }"
              class="image-compare-handle"
@@ -108,7 +108,7 @@ export default {
             default: false,
             required: false
         },
-        showHandleOnDrag: {
+        hideHandle: {
             type: Boolean,
             default: false,
             required: false
