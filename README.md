@@ -1,5 +1,7 @@
 # Vue Image Compare 2
 
+[![npm](https://img.shields.io/npm/v/vue-image-compare2.svg)](https://www.npmjs.com/package/vue-image-compare2) [![npm](https://img.shields.io/npm/dt/vue-image-compare2.svg)](https://www.npmjs.com/package/vue-image-compare2) [![vue2](https://img.shields.io/badge/vue-2-brightgreen.svg)](https://vuejs.org/)
+
 ## Purpose of this fork
 
 **Updates** (original repo seems dead) & new **features** :)
@@ -18,10 +20,6 @@
 You can see the updated features of this fork on : [https://image-compare.netlify.com](https://image-compare.netlify.com)
 
 And still check the original author website : [https://marcincichocki.github.io/vue-image-compare](https://marcincichocki.github.io/vue-image-compare)
-
-## Requirements
-
-* [Vue.js](http://vuejs.org/) (^2.0.0)
 
 ## Installation
 
