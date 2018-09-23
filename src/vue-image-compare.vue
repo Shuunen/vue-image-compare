@@ -262,7 +262,7 @@ export default {
 
         // position
         updatePos() {
-            if (!this.isDraggable) {
+            if (this.isDraggingHandle) {
                 let posX = this.pageX - this.$el.getBoundingClientRect().left
 
                 if (posX < this.padding.left) {
