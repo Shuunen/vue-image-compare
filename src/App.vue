@@ -40,8 +40,9 @@
             <div class="wrapper">
                 <label>Zoom :</label>
                 <input v-model.number="zoom.min" type="number">
-                <input v-model.number="zoom.max" type="number"></div>
+                <input v-model.number="zoom.max" type="number">
             </div>
+        </div>
     </div>
 </template>
 
