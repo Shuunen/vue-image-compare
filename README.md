@@ -6,8 +6,6 @@
 [![Package Quality](https://npm.packagequality.com/shield/vue-image-compare2.svg)](https://packagequality.com/#?package=vue-image-compare2)
 [![GitHub license](https://img.shields.io/github/license/shuunen/vue-image-compare.svg?color=informational)](https://github.com/Shuunen/vue-image-compare/blob/master/LICENSE)
 
-[![Build Status](https://travis-ci.com/Shuunen/vue-image-compare.svg?branch=master)](https://travis-ci.com/Shuunen/vue-image-compare)
-[![David](https://img.shields.io/david/shuunen/vue-image-compare.svg)](https://david-dm.org/shuunen/vue-image-compare)
 [![Website](https://img.shields.io/website/https/image-compare.netlify.app.svg)](https://image-compare.netlify.app)
 [![BCH compliance](https://bettercodehub.com/edge/badge/Shuunen/vue-image-compare?branch=master)](https://bettercodehub.com/)
 
@@ -162,14 +160,14 @@ To contribute or try this component :
 ## Thanks
 
 - [ctf0](https://github.com/ctf0) : for his multiple contributions :heart:
-- [Eslint](https://eslint.org) : super tool to find & fix problems
 - [FreeIcons.io](https://freeicons.io/material-icons-images/compare-icon-15244): for the logo/icon
 - [Github](https://github.com) : for all their great work year after year, pushing OSS forward
 - [Netlify](https://netlify.com) : awesome company that offers hosting for OSS
+- [Npm-run-all](https://github.com/mysticatea/npm-run-all) : to keep my npm scripts clean & readable
 - [Pixabay](https://pixabay.com) : for the free to use images
 - [Repo-checker](https://github.com/Shuunen/repo-checker) : eslint cover /src code and this tool the rest ^^
 - [Shields.io](https://shields.io) : nice looking badges to be proud of
-- [Travis-ci.com](https://travis-ci.com) : for providing free continuous deployments
+- [vite-vue2-starter](https://github.com/matt-auckland/vite-vue2-starter): for the vite vue 2 starter pack
 - [Vue](https://vuejs.org) : when I need a front framework, this is the one I choose <3
 
 ## License

@@ -1,9 +1,6 @@
 import Vue from 'vue'
-import VueMeta from 'vue-meta'
 import App from './app.vue'
-import './tracker'
-
-Vue.use(VueMeta)
+import './trackers.js' // eslint-disable-line import/no-unassigned-import
 
 Vue.config.productionTip = false
 

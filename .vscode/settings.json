@@ -6,5 +6,6 @@
         "com",
         "gmail",
         "marcincichocki"
-    ]
+    ],
+    "javascript.format.insertSpaceBeforeFunctionParenthesis": true
 }

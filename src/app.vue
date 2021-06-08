@@ -36,7 +36,7 @@
           <div class="field">
             <label class="label">After image</label>
             <div class="control">
-              <input v-model="after" class="input" type="text" placeholder="after image">
+              <input v-model="after" class="input" type="text" placeholder="after image" />
             </div>
           </div>
         </div>
@@ -44,7 +44,7 @@
           <div class="field">
             <label class="label">Before image</label>
             <div class="control">
-              <input v-model="before" class="input" type="text" placeholder="before image">
+              <input v-model="before" class="input" type="text" placeholder="before image" />
             </div>
           </div>
         </div>
@@ -55,7 +55,7 @@
           <div class="field">
             <label class="label">After label</label>
             <div class="control">
-              <input v-model="labels.after" class="input" type="text" placeholder="after label">
+              <input v-model="labels.after" class="input" type="text" placeholder="after label" />
             </div>
           </div>
         </div>
@@ -63,7 +63,7 @@
           <div class="field">
             <label class="label">Before label</label>
             <div class="control">
-              <input v-model="labels.before" class="input" type="text" placeholder="before label">
+              <input v-model="labels.before" class="input" type="text" placeholder="before label" />
             </div>
           </div>
         </div>
@@ -74,7 +74,7 @@
           <div class="field">
             <label class="label">Zoom scale min</label>
             <div class="control">
-              <input v-model.number="zoom.min" class="input" type="number" min="0" :max="zoom.max">
+              <input v-model.number="zoom.min" class="input" type="number" min="0" :max="zoom.max" />
             </div>
           </div>
         </div>
@@ -82,7 +82,7 @@
           <div class="field">
             <label class="label">Zoom scale max</label>
             <div class="control">
-              <input v-model.number="zoom.max" class="input" type="number" :min="zoom.min" max="1000">
+              <input v-model.number="zoom.max" class="input" type="number" :min="zoom.min" max="1000" />
             </div>
           </div>
         </div>
@@ -93,7 +93,7 @@
           <div class="control">
             <label class="checkbox">
               full ?
-              <input v-model="full" type="checkbox">
+              <input v-model="full" type="checkbox" />
             </label>
           </div>
         </div>
@@ -101,7 +101,7 @@
           <div class="control">
             <label class="checkbox">
               hideAfter ?
-              <input v-model="hideAfter" type="checkbox">
+              <input v-model="hideAfter" type="checkbox" />
             </label>
           </div>
         </div>
@@ -109,7 +109,7 @@
           <div class="control">
             <label class="checkbox">
               isZoomable ?
-              <input v-model="isZoomable" type="checkbox">
+              <input v-model="isZoomable" type="checkbox" />
             </label>
           </div>
         </div>
@@ -117,7 +117,7 @@
           <div class="control">
             <label class="checkbox">
               isSwitchable ?
-              <input v-model="isSwitchable" type="checkbox">
+              <input v-model="isSwitchable" type="checkbox" />
             </label>
           </div>
         </div>
@@ -125,7 +125,7 @@
           <div class="control">
             <label class="checkbox">
               isDraggable ?
-              <input v-model="isDraggable" type="checkbox">
+              <input v-model="isDraggable" type="checkbox" />
             </label>
           </div>
         </div>
@@ -133,12 +133,12 @@
           <div class="control">
             <label class="checkbox">
               hideHandle ?
-              <input v-model="hideHandle" type="checkbox">
+              <input v-model="hideHandle" type="checkbox" />
             </label>
           </div>
         </div>
       </div>
-      <hr>
+      <hr />
       <div class="columns is-centered">
         <button class="button is-info" @click="toggleOptions">Hide options</button>
       </div>
@@ -149,25 +149,16 @@
 <script>
 /* global require, howuku */
 import packageJson from '../package.json'
-import ImageCompare from '../src/vue-image-compare'
+import ImageCompare from './vue-image-compare.vue'
 
 export default {
   components: {
     ImageCompare,
   },
-  metaInfo: {
-    title: 'Image Compare - Online image comparison tool, side by side with slider & zoom !',
-    htmlAttrs: {
-      lang: 'en',
-    },
-    link: [
-      { rel: 'favicon', href: './assets/favicon.ico' },
-    ],
-  },
   data () {
     return {
-      before: require('./assets/before.svg'),
-      after: require('./assets/after.svg'),
+      before: './assets/before.svg',
+      after: './assets/after.svg',
       full: true,
       hideAfter: false,
       isZoomable: true,
@@ -212,6 +203,7 @@ export default {
 <style>
 @import url("https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css");
+
 html,
 body,
 #app {
@@ -219,6 +211,7 @@ body,
   overflow: hidden;
   --options-width: 900px;
 }
+
 .instructions {
   background-image: url("./assets/instructions.svg");
   background-size: contain;
@@ -232,6 +225,7 @@ body,
   height: 100%;
   z-index: 100;
 }
+
 .options,
 .show-options {
   z-index: 100;
@@ -240,6 +234,7 @@ body,
   background-color: whitesmoke;
   border-radius: 5px;
 }
+
 .options {
   padding: 2rem 2rem 3rem;
   position: absolute;
@@ -247,9 +242,11 @@ body,
   width: var(--options-width);
   left: calc(50% - var(--options-width) / 2);
 }
+
 body {
   margin: 0;
 }
+
 .show-options {
   position: absolute;
   top: 20px;
@@ -259,6 +256,7 @@ body {
   padding: 4px 6px;
   cursor: pointer;
 }
+
 .show-options:hover {
   transform: scale(1.1);
   color: #333;

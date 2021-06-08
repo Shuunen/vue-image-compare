@@ -8,28 +8,15 @@
   ],
   "description": "Compare two images with a fancy slider",
   "devDependencies": {
-    "@vue/cli-plugin-babel": "4.5.9",
-    "@vue/cli-plugin-eslint": "4.5.9",
-    "@vue/cli-service": "4.5.9",
-    "@vue/eslint-config-standard": "5.1.2",
-    "babel-eslint": "10.1.0",
-    "eslint": "7.14.0",
-    "eslint-config-standard": "16.0.2",
-    "eslint-plugin-compat": "3.8.0",
-    "eslint-plugin-import": "2.22.1",
-    "eslint-plugin-node": "11.1.0",
-    "eslint-plugin-promise": "4.2.1",
-    "eslint-plugin-standard": "4.1.0",
-    "eslint-plugin-unicorn": "23.0.0",
-    "eslint-plugin-vue": "7.1.0",
-    "repo-check": "1.14.3",
-    "vue": "2.6.12",
-    "vue-meta": "2.4.0",
-    "vue-template-compiler": "2.6.12"
+    "shuunen-stack": "0.6.2",
+    "npm-run-all": "*",
+    "vite": "2.0.5",
+    "vite-plugin-vue2": "1.4.0",
+    "vue": "2.6.14"
   },
   "displayName": "Vue Image Compare",
   "files": [
-    "src"
+    "src/vue-image-compare.*"
   ],
   "homepage": "https://github.com/Shuunen/vue-image-compare",
   "keywords": [
@@ -49,17 +36,14 @@
     "url": "https://github.com/Shuunen/vue-image-compare.git"
   },
   "scripts": {
-    "build": "vue-cli-service build demo/main.js",
-    "check": "repo-check",
-    "ci": "npm run build && npm run test",
-    "dev": "npm run start",
-    "lint": "eslint --fix --ignore-path .gitignore --ext .js,.vue .",
+    "build": "vite build",
+    "ci": "run-s build lint",
+    "dev": "vite",
+    "lint": "stack lint",
     "postversion": "git push && git push --tags && npm publish",
     "preversion": "npm run ci",
-    "serve": "npx servor dist -o",
-    "start": "vue-cli-service serve demo/main.js -o",
-    "test": "npm run lint && npm run check",
-    "update": "npx npm-check-updates -u"
+    "serve": "vite preview",
+    "update": "stack update"
   },
   "version": "1.0.0"
 }
