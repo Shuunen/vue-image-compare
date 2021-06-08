@@ -1,23 +1,17 @@
 <template>
   <figure :class="{ full }" class="image-compare" @mousemove.prevent="onMouseMove" @click.prevent="onMouseMove($event, true)">
-    <!-- d&d overlay -->
     <div :class="{ visible: showDropzone }" class="drop-zone">Drop 1 or 2 images here !</div>
 
     <div v-show="!hideAfter && showAfter" :style="{ width: posX + 'px' }" class="wrapper" @mousedown.prevent="onMouseDownImage">
-      <!-- a-img -->
-      <img :src="mutableAfter" :style="dimensions" alt="after">
-
-      <!-- a-label -->
+      <img :src="mutableAfter" :style="dimensions" alt="after" />
       <div v-show="afterLabel" class="after-name">
         {{ afterLabel }}
         <div v-show="afterSize" class="size">{{ afterSize }}</div>
       </div>
     </div>
 
-    <!-- b-img -->
-    <img :src="mutableBefore" :style="dimensions" alt="before" @mousedown.prevent="onMouseDownImage">
+    <img :src="mutableBefore" :style="dimensions" alt="before" @mousedown.prevent="onMouseDownImage" />
 
-    <!-- handle -->
     <div v-if="!hideHandle" v-show="!hideAfter" :style="{ left: posX + 'px' }" class="handle" @mousedown.prevent="onMouseDownHandle">
       <span class="handle-icon left">
         <slot name="icon-left" />
@@ -27,7 +21,6 @@
       </span>
     </div>
 
-    <!-- b-label -->
     <div v-show="beforeLabel" class="before-name">
       {{ beforeLabel }}
       <div v-show="beforeSize" class="size">{{ beforeSize }}</div>
@@ -36,16 +29,15 @@
 </template>
 
 <script>
-/* eslint-disable no-console */
 export default {
   props: {
     before: {
       type: String,
-      default: 'https://image-compare.netlify.com/assets/before.jpg',
+      default: '/assets/before.svg',
     },
     after: {
       type: String,
-      default: 'https://image-compare.netlify.com/assets/after.jpg',
+      default: '/assets/after.svg',
     },
     full: {
       type: Boolean,
@@ -149,7 +141,6 @@ export default {
     },
     dimensions () {
       const zoom = Number.parseFloat(this.mutableZoom.toFixed(2))
-
       return {
         width: `${this.width}px`,
         height: this.full ? `${this.height}px` : 'auto',
@@ -171,13 +162,10 @@ export default {
     },
   },
   created () {
-    // prepare debounced versions
-    // var onWheelDebounced = this.debounce(this.onWheel, 100)
     window.addEventListener('mouseup', this.onMouseUp)
     window.addEventListener('resize', this.onResize)
     window.addEventListener('contextmenu', this.onRightClick)
     window.addEventListener('dragenter', this.onDragEnter)
-    // window.addEventListener('dragleave', this.onDragLeave)
     window.addEventListener('dragover', this.onDragOver)
     window.addEventListener('drop', this.onDrop)
   },
@@ -191,7 +179,6 @@ export default {
     this.$el.removeEventListener('wheel', this.onWheel)
     window.removeEventListener('contextmenu', this.onRightClick)
     window.removeEventListener('dragenter', this.onDragEnter)
-    // window.removeEventListener('dragleave', this.onDragLeave)
     window.removeEventListener('dragover', this.onDragOver)
     window.removeEventListener('drop', this.onDrop)
   },
@@ -201,40 +188,30 @@ export default {
       this.height = this.$el.clientHeight
       this.setInitialPosX()
     },
-
-    // mouse
     onMouseDownHandle () {
       this.$emit('movement')
       this.isDraggingHandle = true
     },
     onMouseDownImage () {
-      if (this.isDraggable) {
-        this.isDraggingImage = true
-        this.$emit('movement')
-      }
+      if (!this.isDraggable) return
+      this.isDraggingImage = true
+      this.$emit('movement')
     },
     onMouseUp (event) {
-      // console.log('in mouse up', event)
       event.preventDefault()
       this.isDraggingHandle = false
       this.isDraggingImage = false
       this.pageX = undefined
       this.pageY = undefined
-      if (event.button === 1) {
-        this.onWheelClick()
-      }
+      if (event.button === 1) this.onWheelClick()
     },
     onMouseMove (event, isDragging = false) {
       this.$emit('movement')
-
       if (event && event.type === 'click' && this.isDraggable) return
-
       if (event && this.allowNextFrame && (this.isDragging || isDragging)) {
         this.allowNextFrame = false
-
         let pageX = event.pageX
         let pageY = event.pageY
-
         if (event.targetTouches) {
           pageX = event.targetTouches[0].pageX
           pageY = event.targetTouches[0].pageY
@@ -242,133 +219,72 @@ export default {
           pageX = event.originalEvent.targetTouches[0].pageX
           pageY = event.originalEvent.targetTouches[0].pageY
         }
-
         this.diffX = this.pageX ? pageX - this.pageX : 0
         this.diffY = this.pageY ? pageY - this.pageY : 0
-
         this.pageX = pageX
         this.pageY = pageY
-
-        window.requestAnimationFrame(this.updatePos)
+        window.requestAnimationFrame(this.updatePosition)
       }
     },
-
-    // position
-    updatePos () {
+    updatePosition () {
       if (!this.isDraggable || (this.isDraggable && this.isDraggingHandle)) {
         let posX = this.pageX - this.$el.getBoundingClientRect().left
         const pr = this.padding.right
         const pl = this.padding.left
-
         if (posX < pl) {
           posX = pl
         } else if (posX > this.width - pr) {
           posX = this.width - pr
         }
-
         this.posX = posX
       }
-
       if (this.isDraggingImage) {
         this.shiftX += this.diffX / this.mutableZoom
         this.shiftY += this.diffY / this.mutableZoom
       }
-
       this.allowNextFrame = true
     },
     setInitialPosX () {
-      if (this.paddingTotal >= this.width) {
-        return console.error('Sum of paddings is wider then parent element!')
-      }
-
+      if (this.paddingTotal >= this.width) return console.error('Sum of paddings is wider then parent element!')
       this.posX = (this.width + this.padding.left - this.padding.right) / 2
     },
-
-    // wheel
     onWheel (event) {
-      if (this.isZoomable) {
-        // console.log('should update zoom with event', event)
-        // console.log('update zoom with delta', event.deltaY)
-
-        this.mutableZoom += -event.deltaY / 1000
-
-        this.$nextTick(() => {
-          if (this.mutableZoom >= this.zoom.max) {
-            this.mutableZoom = this.zoom.max
-          } else if (this.mutableZoom <= this.zoom.min) {
-            this.mutableZoom = this.zoom.min
-          }
-        })
-      }
+      if (!this.isZoomable) return
+      this.mutableZoom += -event.deltaY / 1000
+      this.$nextTick(() => {
+        if (this.mutableZoom >= this.zoom.max) {
+          this.mutableZoom = this.zoom.max
+        } else if (this.mutableZoom <= this.zoom.min) {
+          this.mutableZoom = this.zoom.min
+        }
+      })
     },
-
-    // click
     onWheelClick () {
       // will flick images quickly
       let index = 0
-      for (index = 0; index < 10; index++) {
-        setTimeout(this.switchImages, index * 100)
-      }
-
-      // reset after visibility
-      setTimeout(() => (this.showAfter = true), index * 100)
+      for (index = 0; index < 10; index++) setTimeout(this.switchImages, index * 100)
+      setTimeout(() => (this.showAfter = true), index * 100) // reset after visibility
     },
     onRightClick (event) {
-      // console.log('switching images')
       event.preventDefault()
       this.switchImages()
-    },
-
-    // helper
-    debounce (function_, wait, immediate) {
-      let timeout
-      return function () {
-        const context = this
-        const arguments_ = arguments
-        const later = function () {
-          timeout = undefined
-          if (!immediate) function_.apply(context, arguments_)
-        }
-        const callNow = immediate && !timeout
-        clearTimeout(timeout)
-        timeout = setTimeout(later, wait)
-        if (callNow) function_.apply(context, arguments_)
-      }
     },
     switchImages () {
       this.showAfter = !this.showAfter
     },
-
-    // drag & drop
     onDragEnter () {
-      if (this.isSwitchable) {
-        console.log('onDragEnter')
-        // event.preventDefault()
-        this.showDropzone = true
-      }
-    },
-    onDragLeave (event) {
-      if (this.isSwitchable) {
-        console.log('onDragLeave')
-        event.preventDefault()
-        this.showDropzone = false
-      }
+      if (!this.isSwitchable) return
+      this.showDropzone = true
     },
     onDragOver (event) {
-      if (this.isSwitchable) {
-        // console.log('onDragOver')
-        event.preventDefault()
-        // this.showDropzone = true
-      }
+      if (!this.isSwitchable) return
+      event.preventDefault()
     },
     onDrop (event) {
       if (this.isSwitchable) {
-        // console.log('onDrop', event)
         event.preventDefault()
         this.showDropzone = false
-        // console.log('drop', event)
         const files = event.dataTransfer.files
-
         if (files.length === 1) {
           console.log('drop file :', files[0])
           const x = event.x
@@ -383,10 +299,8 @@ export default {
           this.loadFile(files[0], true)
           this.loadFile(files[1], false)
         }
-        // reset zoom
-        this.mutableZoom = 1
-        // reset after visibility
-        this.showAfter = true
+        this.mutableZoom = 1 // reset zoom
+        this.showAfter = true // reset after visibility
         this.onResize()
       }
     },
@@ -398,7 +312,6 @@ export default {
     },
     loadFile (file, leftSide) {
       const reader = new FileReader()
-
       reader.addEventListener('load', (event) => {
         if (leftSide) {
           this.afterName = this.getFileName(file)

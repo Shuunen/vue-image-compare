@@ -4,8 +4,7 @@
   margin: 0;
 }
 
-.after-name,
-.before-name {
+.after-name, .before-name {
   font-size: 1rem;
   position: absolute;
   bottom: 0;
@@ -17,8 +16,7 @@
   background-color: white;
 }
 
-.after-name .size,
-.before-name .size {
+.after-name .size, .before-name .size {
   font-family: monospace;
   font-size: 1.2rem;
   margin-top: 2px;
@@ -83,8 +81,7 @@ img {
   object-fit: contain;
 }
 
-.wrapper,
-.handle {
+.wrapper, .handle {
   position: absolute;
   top: 0;
   bottom: 0;
