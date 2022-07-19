@@ -19,6 +19,7 @@
 
     <i title="Show options" class="show-options fas fa-sliders-h" aria-hidden="true" @click="toggleOptions" />
 
+    <div v-show="showOptions" class="backdrop" @click="showOptions = false"></div>
     <div v-show="showOptions" class="options">
       <div class="columns">
         <div class="column has-text-centered">
@@ -235,9 +236,10 @@ body,
 .options {
   padding: 2rem 2rem 3rem;
   position: absolute;
-  top: 25%;
+  top: calc(50% - 300px);
   width: var(--options-width);
   left: calc(50% - var(--options-width) / 2);
+  z-index: 300;
 }
 
 body {
@@ -257,5 +259,15 @@ body {
 .show-options:hover {
   transform: scale(1.1);
   color: #333;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 200;
 }
 </style>
