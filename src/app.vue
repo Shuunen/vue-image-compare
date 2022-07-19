@@ -24,7 +24,7 @@
         <div class="column has-text-centered">
           <h1 class="title">{{ pkg.displayName }}</h1>
           <h2 class="subtitle">version {{ pkg.version }}</h2>
-          <a target="_blank" :href="pkg.homepage" onclick="howuku.track('github-link')">
+          <a target="_blank" :href="pkg.homepage">
             Project, sources & documentation on GitHub
             <i class="fab fa-github" aria-hidden="true" />
           </a>
@@ -147,7 +147,6 @@
 </template>
 
 <script>
-/* global require, howuku */
 import packageJson from '../package.json'
 import ImageCompare from './vue-image-compare.vue'
 
@@ -186,7 +185,6 @@ export default {
   },
   methods: {
     onDrop () {
-      howuku.track('user-drop')
       if (this.showInstructions) this.showInstructions = false
     },
     toggleInstructions () {
@@ -194,7 +192,6 @@ export default {
     },
     toggleOptions () {
       this.showOptions = !this.showOptions
-      howuku.track('toggle-options')
     },
   },
 }
