@@ -1,11 +1,16 @@
 {
-    "cSpell.words": [
-        "Cichocki",
-        "Draggable",
-        "Marcin",
-        "com",
-        "gmail",
-        "marcincichocki"
-    ],
-    "javascript.format.insertSpaceBeforeFunctionParenthesis": true
+  "cSpell.words": [
+    "Cichocki",
+    "Draggable",
+    "Marcin",
+    "com",
+    "gmail",
+    "marcincichocki"
+  ],
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#0e3b35",
+    "titleBar.activeBackground": "#145219",
+    "titleBar.activeForeground": "#FDFAF5"
+  }
 }
