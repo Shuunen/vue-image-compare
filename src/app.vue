@@ -24,7 +24,7 @@
       <div class="columns">
         <div class="column has-text-centered">
           <h1 class="title">{{ pkg.displayName }}</h1>
-          <h2 class="subtitle">version {{ pkg.version }}</h2>
+          <h2 class="subtitle">__unique-mark__</h2>
           <a target="_blank" :href="pkg.homepage">
             Project, sources & documentation on GitHub
             <i class="fab fa-github" aria-hidden="true" />

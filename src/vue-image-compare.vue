@@ -231,11 +231,8 @@ export default {
         let posX = this.pageX - this.$el.getBoundingClientRect().left
         const pr = this.padding.right
         const pl = this.padding.left
-        if (posX < pl) {
-          posX = pl
-        } else if (posX > this.width - pr) {
-          posX = this.width - pr
-        }
+        if (posX < pl) posX = pl
+        else if (posX > this.width - pr) posX = this.width - pr
         this.posX = posX
       }
       if (this.isDraggingImage) {
@@ -252,11 +249,8 @@ export default {
       if (!this.isZoomable) return
       this.mutableZoom += -event.deltaY / 1000
       this.$nextTick(() => {
-        if (this.mutableZoom >= this.zoom.max) {
-          this.mutableZoom = this.zoom.max
-        } else if (this.mutableZoom <= this.zoom.min) {
-          this.mutableZoom = this.zoom.min
-        }
+        if (this.mutableZoom >= this.zoom.max) this.mutableZoom = this.zoom.max
+        else if (this.mutableZoom <= this.zoom.min) this.mutableZoom = this.zoom.min
       })
     },
     onWheelClick () {

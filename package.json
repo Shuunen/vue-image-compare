@@ -8,12 +8,15 @@
   ],
   "description": "Compare two images with a fancy slider",
   "devDependencies": {
-    "npm-run-all": "*",
-    "shuunen-stack": "^0.14.0",
-    "vite": "^2.6.13",
-    "vite-plugin-vue2": "^1.9.0",
-    "vue": "^2.6.14",
-    "vue-template-compiler": "^2.6.14"
+    "eslint": "8.20",
+    "eslint-plugin-unicorn": "43",
+    "eslint-plugin-html": "7",
+    "eslint-plugin-vue": "9",
+    "vite": "2.9",
+    "vite-plugin-vue2": "2.0",
+    "vue": "2.7",
+    "shuutils": "5.7",
+    "vue-template-compiler": "2.7"
   },
   "displayName": "Vue Image Compare",
   "files": [
@@ -37,10 +40,10 @@
     "url": "https://github.com/Shuunen/vue-image-compare.git"
   },
   "scripts": {
-    "build": "vite build",
-    "ci": "run-s build lint",
+    "build": "vite build && unique-mark dist/assets/index.*.js",
+    "ci": "npm run build && npm run lint",
     "dev": "vite",
-    "lint": "stack lint",
+    "lint": "eslint --fix --ignore-path .gitignore --ext .js,.html,.vue .",
     "postversion": "git push && git push --tags && npm publish",
     "preversion": "npm run ci",
     "serve": "vite preview"
