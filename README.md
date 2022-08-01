@@ -175,6 +175,7 @@ To contribute or try this component :
 - [Repo-checker](https://github.com/Shuunen/repo-checker) : eslint cover /src code and this tool the rest ^^
 - [Servor](https://github.com/lukejacksonn/servor) : dependency free dev server for single page app development
 - [Shields.io](https://shields.io) : nice looking badges to be proud of
+- [Shuutils](https://github.com/Shuunen/shuutils) : collection of pure JS utils
 - [vite-vue2-starter](https://github.com/matt-auckland/vite-vue2-starter): for the vite vue 2 starter pack
 - [Vite](https://github.com/vitejs/vite) : super fast frontend tooling
 - [Vue](https://vuejs.org) : when I need a front framework, this is the one I choose <3
