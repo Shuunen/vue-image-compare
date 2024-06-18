@@ -40,12 +40,12 @@
     "url": "https://github.com/Shuunen/vue-image-compare.git"
   },
   "scripts": {
-    "build": "vite build && unique-mark dist/assets/index.*.js",
-    "ci": "npm run build && npm run lint",
+    "build": "vite build && unique-mark dist/assets/index.*.js && echo build success",
+    "check": "pnpm install && echo install success && pnpm build && pnpm lint",
     "dev": "vite",
-    "lint": "eslint --fix --ignore-path .gitignore --ext .js,.html,.vue .",
+    "lint": "eslint --fix --ignore-path .gitignore --ext .js,.html,.vue . && echo lint success",
     "postversion": "git push && git push --tags && npm publish",
-    "preversion": "npm run ci",
+    "preversion": "pnpm check",
     "serve": "vite preview"
   },
   "version": "1.0.0"
