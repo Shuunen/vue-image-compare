@@ -1,41 +1,24 @@
 name: ci
 
-on:
-  push:
-    branches:
-      - main
-      - master
-  pull_request:
-    branches:
-      - main
-      - master
+on: push
 
 jobs:
   ci:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [14]
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout 🛎
-        uses: actions/checkout@master
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Setup node env 🏗
-        uses: actions/setup-node@v2.1.5
+      - name: Setup node
+        uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node }}
+          node-version: 20
 
-      - name: Install dependencies 👨🏻‍💻
-        run: npm install
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
 
-      - name: Run build 👀
-        run: npm run build
-
-      - name: Run linter 👀
-        run: npm run lint
-
-      - name: Run tests 👀
-        run: npm run test
+      - name: Run check 👀
+        run: pnpm run check
