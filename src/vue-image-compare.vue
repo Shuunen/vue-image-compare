@@ -281,7 +281,7 @@ export default {
         const files = event.dataTransfer.files
         if (files.length === 1) {
           console.log('drop file :', files[0])
-          const x = event.x
+          const x = event.x // eslint-disable-line id-length
           const half = Math.round(window.outerWidth / 2)
           const leftSide = x <= half
           console.log('x ?', x)

@@ -19,52 +19,109 @@
   ],
   "root": true,
   "rules": {
+    "@typescript-eslint/consistent-indexed-object-style": "off",
+    "@typescript-eslint/consistent-type-definitions": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/lines-around-comment": "off",
+    "@typescript-eslint/no-type-alias": "off",
+    "@typescript-eslint/prefer-destructuring": "off",
     "capitalized-comments": "off",
     "comma-dangle": [
       "error",
       "always-multiline"
     ],
+    "compat/compat": "off",
     "curly": [
       "error",
       "multi"
     ],
+    "eslint-comments/no-use": "off",
+    "etc/no-deprecated": "off",
+    "etc/no-internal": "off",
+    "etc/no-misused-generics": "off",
+    "etc/prefer-interface": "off",
+    "ext/lines-between-object-properties": "off",
     "func-names": [
       "error",
       "always"
     ],
-    "import/no-unassigned-import": "off",
-    "indent": [
+    "id-length": [
       "error",
-      2
+      {
+        "exceptions": [
+          "t"
+        ],
+        "min": 2
+      }
     ],
+    "import/extensions": "off",
+    "import/newline-after-import": "off",
+    "import/no-unassigned-import": "off",
+    "import/order": "off",
+    "import/prefer-default-export": "off",
+    "indent": "off",
+    "line-comment-position": "off",
+    "lines-around-comment": "off",
     "lines-between-class-members": "off",
+    "logical-assignment-operators": "off",
+    "max-len": "off",
     "max-statements-per-line": "off",
     "no-console": "off",
+    "no-inline-comments": "off",
+    "no-restricted-syntax": [
+      "error",
+      {
+        "message": "Avoid using Class, just use good old unit-testable functions :)",
+        "selector": "ClassDeclaration"
+      },
+      {
+        "message": "Don't specify return type on function",
+        "selector": "FunctionDeclaration[returnType]"
+      },
+      {
+        "message": "Don't specify return type on function",
+        "selector": "FunctionExpression[returnType]"
+      }
+    ],
     "object-curly-spacing": [
       "error",
       "always"
     ],
     "padding-line-between-statements": "off",
+    "prefer-destructuring": "off",
+    "prettier/prettier": "off",
+    "putout/putout": "off",
     "quote-props": [
       "error",
       "consistent-as-needed"
     ],
-    "quotes": [
+    "quotes": "off",
+    "regexp/require-unicode-sets-regexp": "off",
+    "require-atomic-updates": [
       "error",
-      "single"
+      {
+        "allowProperties": true
+      }
     ],
     "semi": [
       "error",
       "never"
     ],
+    "simple-import-sort/imports": "off",
     "space-before-function-paren": [
       "error",
       "always"
     ],
+    "space-before-function-parent": "off",
+    "total-functions/no-partial-division": "off",
+    "total-functions/no-unsafe-readonly-mutable-assignment": "off",
+    "typescript-compat/compat": "off",
     "unicorn/no-array-for-each": "off",
     "unicorn/no-process-exit": "off",
     "unicorn/prefer-module": "off",
     "unicorn/prefer-node-protocol": "off",
+    "unicorn/prefer-spread": "off",
+    "unicorn/prefer-string-replace-all": "off",
     "unicorn/prefer-switch": "off",
     "unicorn/prevent-abbreviations": [
       "error",
@@ -78,6 +135,7 @@
     ],
     "vue/first-attribute-linebreak": "off",
     "vue/html-closing-bracket-newline": "off",
+    "vue/html-indent": "off",
     "vue/html-self-closing": "off",
     "vue/max-attributes-per-line": "off",
     "vue/no-multiple-template-root": "off",

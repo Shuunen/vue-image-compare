@@ -1,4 +1,5 @@
 {
+  "$schema": "https://json.schemastore.org/package",
   "author": "Marcin Cichocki <marcincichocki1993@gmail.com>",
   "bugs": "https://github.com/Shuunen/vue-image-compare/issues",
   "contributors": [
@@ -8,14 +9,14 @@
   ],
   "description": "Compare two images with a fancy slider",
   "devDependencies": {
-    "eslint": "8.20",
-    "eslint-plugin-unicorn": "43",
-    "eslint-plugin-html": "7",
-    "eslint-plugin-vue": "9",
+    "eslint": "8.57",
+    "eslint-plugin-html": "8.1",
+    "eslint-plugin-unicorn": "54",
+    "eslint-plugin-vue": "9.26",
+    "shuutils": "8.0",
     "vite": "2.9",
     "vite-plugin-vue2": "2.0",
     "vue": "2.7",
-    "shuutils": "5.7",
     "vue-template-compiler": "2.7"
   },
   "displayName": "Vue Image Compare",
@@ -43,7 +44,7 @@
     "build": "vite build && unique-mark dist/assets/index.*.js && echo build success",
     "check": "pnpm install && echo install success && pnpm build && pnpm lint",
     "dev": "vite",
-    "lint": "eslint --fix --ignore-path .gitignore --ext .js,.html,.vue . && echo lint success",
+    "lint": "eslint --cache --fix --ignore-path .gitignore --ext .js,.html,.vue . && echo lint success",
     "postversion": "git push && git push --tags && npm publish",
     "preversion": "pnpm check",
     "serve": "vite preview"
