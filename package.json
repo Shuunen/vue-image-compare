@@ -13,6 +13,7 @@
     "eslint-plugin-html": "8.1",
     "eslint-plugin-unicorn": "54",
     "eslint-plugin-vue": "9.26",
+    "repo-check": "1.36",
     "shuutils": "8.0",
     "vite": "2.9",
     "vite-plugin-vue2": "2.0",
@@ -42,7 +43,7 @@
   },
   "scripts": {
     "build": "vite build && unique-mark dist/assets/index.*.js && echo build success",
-    "check": "pnpm install && echo install success && pnpm build && pnpm lint",
+    "check": "pnpm install && echo install success && repo-check && echo repo-check success && pnpm build && pnpm lint",
     "dev": "vite",
     "lint": "eslint --cache --fix --ignore-path .gitignore --ext .js,.html,.vue . && echo lint success",
     "postversion": "git push && git push --tags && npm publish",
