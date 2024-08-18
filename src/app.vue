@@ -1,33 +1,29 @@
+<!-- eslint-disable tailwindcss/no-custom-classname -->
 <template>
   <div id="app">
-    <div v-if="showInstructions" class="instructions" @click="toggleInstructions" />
-    <image-compare
-      :before="before"
-      :after="after"
-      :full="full"
-      :hide-after="hideAfter"
-      :is-zoomable="isZoomable"
-      :is-switchable="isSwitchable"
-      :is-draggable="isDraggable"
-      :hide-handle="hideHandle"
-      :zoom="{ min: zoom.min, max: zoom.max }"
-      :labels="{ before: labels.before, after: labels.after }"
-    >
-      <i slot="icon-left" class="fas fa-angle-left" aria-hidden="true" />
-      <i slot="icon-right" class="fas fa-angle-right" aria-hidden="true" />
+    <div @click="toggleInstructions" class="instructions" v-if="showInstructions" />
+    <image-compare :after="after" :before="before" :full="full" :hide-after="hideAfter" :hide-handle="hideHandle" :is-draggable="isDraggable"
+      :is-switchable="isSwitchable" :is-zoomable="isZoomable" :labels="{ before: labels.before, after: labels.after }"
+      :zoom="{ min: zoom.min, max: zoom.max }">
+      <template #icon-left>
+        <i aria-hidden="true" class="fas fa-angle-left" />
+      </template>
+      <template #icon-right>
+        <i aria-hidden="true" class="fas fa-angle-right" />
+      </template>
     </image-compare>
 
-    <i title="Show options" class="show-options fas fa-sliders-h" aria-hidden="true" @click="toggleOptions" />
+    <i @click="toggleOptions" aria-hidden="true" class="show-options fas fa-sliders-h" title="Show options" />
 
-    <div v-show="showOptions" class="backdrop" @click="showOptions = false"></div>
-    <div v-show="showOptions" class="options">
+    <div @click="showOptions = false" class="backdrop" v-show="showOptions" />
+    <div class="options" v-show="showOptions">
       <div class="columns">
         <div class="column has-text-centered">
           <h1 class="title">{{ pkg.displayName }}</h1>
           <h2 class="subtitle">__unique-mark__</h2>
-          <a target="_blank" :href="pkg.homepage">
+          <a :href="pkg.homepage" target="_blank">
             Project, sources & documentation on GitHub
-            <i class="fab fa-github" aria-hidden="true" />
+            <i aria-hidden="true" class="fab fa-github" />
           </a>
         </div>
       </div>
@@ -37,7 +33,7 @@
           <div class="field">
             <label class="label">After image</label>
             <div class="control">
-              <input v-model="after" class="input" type="text" placeholder="after image" />
+              <input class="input" placeholder="after image" type="text" v-model="after">
             </div>
           </div>
         </div>
@@ -45,7 +41,7 @@
           <div class="field">
             <label class="label">Before image</label>
             <div class="control">
-              <input v-model="before" class="input" type="text" placeholder="before image" />
+              <input class="input" placeholder="before image" type="text" v-model="before">
             </div>
           </div>
         </div>
@@ -56,7 +52,7 @@
           <div class="field">
             <label class="label">After label</label>
             <div class="control">
-              <input v-model="labels.after" class="input" type="text" placeholder="after label" />
+              <input class="input" placeholder="after label" type="text" v-model="labels.after">
             </div>
           </div>
         </div>
@@ -64,7 +60,7 @@
           <div class="field">
             <label class="label">Before label</label>
             <div class="control">
-              <input v-model="labels.before" class="input" type="text" placeholder="before label" />
+              <input class="input" placeholder="before label" type="text" v-model="labels.before">
             </div>
           </div>
         </div>
@@ -75,7 +71,7 @@
           <div class="field">
             <label class="label">Zoom scale min</label>
             <div class="control">
-              <input v-model.number="zoom.min" class="input" type="number" min="0" :max="zoom.max" />
+              <input :max="zoom.max" class="input" min="0" type="number" v-model.number="zoom.min">
             </div>
           </div>
         </div>
@@ -83,7 +79,7 @@
           <div class="field">
             <label class="label">Zoom scale max</label>
             <div class="control">
-              <input v-model.number="zoom.max" class="input" type="number" :min="zoom.min" max="1000" />
+              <input :min="zoom.min" class="input" max="1000" type="number" v-model.number="zoom.max">
             </div>
           </div>
         </div>
@@ -94,7 +90,7 @@
           <div class="control">
             <label class="checkbox">
               full ?
-              <input v-model="full" type="checkbox" />
+              <input type="checkbox" v-model="full">
             </label>
           </div>
         </div>
@@ -102,7 +98,7 @@
           <div class="control">
             <label class="checkbox">
               hideAfter ?
-              <input v-model="hideAfter" type="checkbox" />
+              <input type="checkbox" v-model="hideAfter">
             </label>
           </div>
         </div>
@@ -110,7 +106,7 @@
           <div class="control">
             <label class="checkbox">
               isZoomable ?
-              <input v-model="isZoomable" type="checkbox" />
+              <input type="checkbox" v-model="isZoomable">
             </label>
           </div>
         </div>
@@ -118,7 +114,7 @@
           <div class="control">
             <label class="checkbox">
               isSwitchable ?
-              <input v-model="isSwitchable" type="checkbox" />
+              <input type="checkbox" v-model="isSwitchable">
             </label>
           </div>
         </div>
@@ -126,7 +122,7 @@
           <div class="control">
             <label class="checkbox">
               isDraggable ?
-              <input v-model="isDraggable" type="checkbox" />
+              <input type="checkbox" v-model="isDraggable">
             </label>
           </div>
         </div>
@@ -134,14 +130,14 @@
           <div class="control">
             <label class="checkbox">
               hideHandle ?
-              <input v-model="hideHandle" type="checkbox" />
+              <input type="checkbox" v-model="hideHandle">
             </label>
           </div>
         </div>
       </div>
-      <hr />
+      <hr>
       <div class="columns is-centered">
-        <button class="button is-info" @click="toggleOptions">Hide options</button>
+        <button @click="toggleOptions" class="button is-info">Hide options</button>
       </div>
     </div>
   </div>
@@ -152,37 +148,34 @@ import packageJson from '../package.json'
 import ImageCompare from './vue-image-compare.vue'
 
 export default {
+  beforeUnmount () {
+    window.removeEventListener('drop', this.onDrop)
+  },
   components: {
     ImageCompare,
   },
   data () {
     return {
-      before: './assets/before.svg',
       after: './assets/after.svg',
+      before: './assets/before.svg',
       full: true,
       hideAfter: false,
-      isZoomable: true,
-      isSwitchable: true,
-      isDraggable: true,
-      showInstructions: true,
-      showOptions: false,
       hideHandle: false,
+      isDraggable: true,
+      isSwitchable: true,
+      isZoomable: true,
       labels: {
-        before: 'Before',
         after: 'After',
-      },
-      zoom: {
-        min: 0.5,
-        max: 4,
+        before: 'Before',
       },
       pkg: packageJson,
+      showInstructions: true,
+      showOptions: false,
+      zoom: {
+        max: 4,
+        min: 0.5,
+      },
     }
-  },
-  mounted () {
-    window.addEventListener('drop', this.onDrop)
-  },
-  beforeDestroy () {
-    window.removeEventListener('drop', this.onDrop)
   },
   methods: {
     onDrop () {
@@ -194,6 +187,9 @@ export default {
     toggleOptions () {
       this.showOptions = !this.showOptions
     },
+  },
+  mounted () {
+    window.addEventListener('drop', this.onDrop)
   },
 }
 </script>

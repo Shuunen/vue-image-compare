@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "outDir": "dist"
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "coverage"
+  ],
+  "extends": "@tsconfig/strictest/tsconfig.json",
+  "include": [
+    "src",
+    "*.js",
+    "*.cjs"
+  ]
+}
