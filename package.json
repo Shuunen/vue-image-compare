@@ -13,7 +13,7 @@
     "eslint": "*",
     "eslint-plugin-shuunen": "0.2",
     "repo-check": "1.37",
-    "shuutils": "8.1",
+    "shuutils": "10.1",
     "vite": "2.9",
     "vite-plugin-vue2": "2.0",
     "vue": "2.7",
@@ -41,7 +41,7 @@
     "url": "https://github.com/Shuunen/vue-image-compare.git"
   },
   "scripts": {
-    "build": "vite build && unique-mark dist/assets/index.*.js && echo build success",
+    "build": "vite build && unique-mark dist/assets/index.*.{js} && echo build success",
     "check": "pnpm install && echo install success && repo-check && echo repo-check success && pnpm build && pnpm lint && echo check success",
     "dev": "vite",
     "lint": "eslint --cache src && echo lint success",
