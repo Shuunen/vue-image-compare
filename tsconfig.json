@@ -1,7 +1,11 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "outDir": "dist"
+    "module": "NodeNext",
+    "moduleResolution": "nodenext",
+    "outDir": "dist",
+    "resolveJsonModule": true,
+    "target": "ESNext"
   },
   "exclude": [
     "node_modules",
@@ -11,7 +15,6 @@
   "extends": "@tsconfig/strictest/tsconfig.json",
   "include": [
     "src",
-    "*.js",
-    "*.cjs"
+    "*.js"
   ]
 }

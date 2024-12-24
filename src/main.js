@@ -1,7 +1,4 @@
-import Vue from 'vue'
-import App from './app.vue'
+import { createApp } from 'vue'
+import app from './app.vue'
 
-Vue.config.productionTip = false
-
-// eslint-disable-next-line id-length
-new Vue({ render: h => h(App) }).$mount('#app')
+createApp(app).mount('#app')

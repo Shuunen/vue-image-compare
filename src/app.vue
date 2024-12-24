@@ -149,7 +149,7 @@ import ImageCompare from './vue-image-compare.vue'
 
 export default {
   beforeUnmount () {
-    window.removeEventListener('drop', this.onDrop)
+    globalThis.removeEventListener('drop', this.onDrop)
   },
   components: {
     ImageCompare,
@@ -189,7 +189,7 @@ export default {
     },
   },
   mounted () {
-    window.addEventListener('drop', this.onDrop)
+    globalThis.addEventListener('drop', this.onDrop)
   },
 }
 </script>

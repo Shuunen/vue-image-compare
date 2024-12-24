@@ -40,13 +40,13 @@ const nbDecimals = 2
 
 export default {
   beforeUnmount () {
-    window.removeEventListener('mouseup', this.onMouseUp)
-    window.removeEventListener('resize', this.onResize)
+    globalThis.removeEventListener('mouseup', this.onMouseUp)
+    globalThis.removeEventListener('resize', this.onResize)
     this.$el.removeEventListener('wheel', this.onWheel)
-    window.removeEventListener('contextmenu', this.onRightClick)
-    window.removeEventListener('dragenter', this.onDragEnter)
-    window.removeEventListener('dragover', this.onDragOver)
-    window.removeEventListener('drop', this.onDrop)
+    globalThis.removeEventListener('contextmenu', this.onRightClick)
+    globalThis.removeEventListener('dragenter', this.onDragEnter)
+    globalThis.removeEventListener('dragover', this.onDragOver)
+    globalThis.removeEventListener('drop', this.onDrop)
   },
   computed: {
     afterLabel () {
@@ -71,12 +71,12 @@ export default {
     },
   },
   created () {
-    window.addEventListener('mouseup', this.onMouseUp)
-    window.addEventListener('resize', this.onResize)
-    window.addEventListener('contextmenu', this.onRightClick)
-    window.addEventListener('dragenter', this.onDragEnter)
-    window.addEventListener('dragover', this.onDragOver)
-    window.addEventListener('drop', this.onDrop)
+    globalThis.addEventListener('mouseup', this.onMouseUp)
+    globalThis.addEventListener('resize', this.onResize)
+    globalThis.addEventListener('contextmenu', this.onRightClick)
+    globalThis.addEventListener('dragenter', this.onDragEnter)
+    globalThis.addEventListener('dragover', this.onDragOver)
+    globalThis.addEventListener('drop', this.onDrop)
   },
   data () {
     return {
@@ -144,7 +144,7 @@ export default {
         if (files.length === 1) {
           logger.debug('drop file :', files[0])
           const x = event.x // eslint-disable-line id-length
-          const half = Math.round(window.outerWidth / nbDecimals)
+          const half = Math.round(globalThis.outerWidth / nbDecimals)
           const leftSide = x <= half
           logger.debug('x ?', x)
           logger.debug('half ?', half)
@@ -188,7 +188,7 @@ export default {
         this.diffY = this.pageY ? pageY - this.pageY : 0
         this.pageX = pageX
         this.pageY = pageY
-        window.requestAnimationFrame(this.updatePosition)
+        globalThis.requestAnimationFrame(this.updatePosition)
       }
     },
     onMouseUp (event) {

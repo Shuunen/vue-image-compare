@@ -10,16 +10,25 @@
   "description": "Compare two images with a fancy slider",
   "devDependencies": {
     "@tsconfig/strictest": "2.0",
+    "@vitejs/plugin-vue": "5.2",
     "eslint": "*",
-    "eslint-plugin-shuunen": "0.2",
-    "repo-check": "1.37",
+    "eslint-plugin-shuunen": "0.4",
+    "repo-check": "1.40",
     "shuutils": "10.1",
-    "vite": "2.9",
-    "vite-plugin-vue2": "2.0",
-    "vue": "2.7",
-    "vue-template-compiler": "2.7"
+    "vite": "6.0",
+    "vue": "*",
+    "vue-tsc": "*"
   },
   "displayName": "Vue Image Compare",
+  "fake-for-repo-check-:'(": {
+    "exports": {
+      ".": {
+        "import": "./dist/index.js",
+        "require": "./dist/index.cjs"
+      }
+    },
+    "main": "./src/main.js"
+  },
   "files": [
     "src/vue-image-compare.*"
   ],
@@ -41,13 +50,18 @@
     "url": "https://github.com/Shuunen/vue-image-compare.git"
   },
   "scripts": {
-    "build": "vite build && unique-mark dist/assets/index.*.{js} && echo build success",
-    "check": "pnpm install && echo install success && repo-check && echo repo-check success && pnpm build && pnpm lint && echo check success",
+    "build": "vite build && pnpm mark && echo build success",
+    "check": "pnpm install && echo install success && pnpm build && pnpm lint && echo check success",
     "dev": "vite",
-    "lint": "eslint --cache src && echo lint success",
+    "lint": "pnpm lint:repo && pnpm lint:eslint && echo lint success",
+    "lint:eslint": "eslint --cache src && echo lint:eslint success",
+    "lint:repo": "repo-check && echo lint:repo success",
+    "lint:vue": "vue-tsc --noEmit && echo lint:vue success",
+    "mark": "unique-mark dist/**/*.{html,js} && echo mark success",
     "postversion": "git push && git push --tags && npm publish",
     "preversion": "pnpm check",
     "serve": "vite preview"
   },
+  "type": "module",
   "version": "1.0.0"
 }

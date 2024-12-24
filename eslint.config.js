@@ -1,14 +1,12 @@
-'use strict'
-
 // @ts-expect-error missing types
-const shuunen = require('eslint-plugin-shuunen')
+import shuunen from 'eslint-plugin-shuunen'
 
-module.exports = [
+export default [
   ...shuunen.configs.base,
   ...shuunen.configs.browser,
   // ...shuunen.configs.node,
   // ...shuunen.configs.typescript,
-  shuunen.configs.vue,
+  ...shuunen.configs.vue,
   {
     name: 'project-overrides',
     rules: {
