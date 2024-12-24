@@ -1,14 +1,11 @@
 # Vue Image Compare
 
-[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/Shuunen/vue-image-compare?style=flat)](https://codeclimate.com/github/Shuunen/vue-image-compare)
 [![Install size](https://badgen.net/packagephobia/install/vue-image-compare2)](https://packagephobia.com/result?p=vue-image-compare2)
 [![Publish size](https://img.shields.io/bundlephobia/min/vue-image-compare2?label=publish%20size)](https://bundlephobia.com/package/vue-image-compare2)
 [![npm](https://img.shields.io/npm/v/vue-image-compare2.svg?color=informational)](https://www.npmjs.com/package/vue-image-compare2)
 [![npm monthly downloads](https://img.shields.io/npm/dm/vue-image-compare2.svg?color=informational)](https://www.npmjs.com/package/vue-image-compare2)
-[![vue2](https://img.shields.io/badge/vue-2-brightgreen.svg?color=informational)](https://vuejs.org/)
 [![Package Quality](https://npm.packagequality.com/shield/vue-image-compare2.svg)](https://packagequality.com/#?package=vue-image-compare2)
 [![GitHub license](https://img.shields.io/github/license/shuunen/vue-image-compare.svg?color=informational)](https://github.com/Shuunen/vue-image-compare/blob/master/LICENSE)
-
 [![Website](https://img.shields.io/website/https/image-compare.netlify.app.svg)](https://image-compare.netlify.app)
 
 - [Vue Image Compare](#vue-image-compare)
@@ -22,6 +19,8 @@
   - [Todo](#todo)
   - [Thanks](#thanks)
   - [License](#license)
+  - [Stargazers over time](#stargazers-over-time)
+  - [Page views](#page-views)
 
 ## Purpose of this fork
 
@@ -177,3 +176,11 @@ To contribute or try this component :
 ## License
 
 [MIT](/LICENSE)
+
+## Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/Shuunen/vue-image-compare.svg?variant=adaptive)](https://starchart.cc/Shuunen/vue-image-compare)
+
+## Page views
+
+[![Free Website Counter](https://www.websitecounterfree.com/c.php?d=9&id=64399&s=12)](https://www.websitecounterfree.com)
